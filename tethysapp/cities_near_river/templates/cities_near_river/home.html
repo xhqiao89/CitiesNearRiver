@@ -1,0 +1,34 @@
+{% extends "cities_near_river/base.html" %}
+
+{% load staticfiles %}
+
+{% block styles %}
+{{ block.super }}
+    <link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/css/esri.css">
+    <style>
+      #mapDiv {
+        height: 600px;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+    </style>
+{% endblock %}
+
+{% block app_navigation_items %}
+<p>Distance:</p>
+<input type="text" id="distance"><br>
+<button onclick="app.run_service()">Find cites near river!</button>
+{% endblock %}
+
+
+{% block app_content %}
+<div id="mapDiv"></div>
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script src="https://js.arcgis.com/3.20/init.js"></script>
+  <script src="{% static 'cities_near_river/js/main.js' %}"></script>
+{% endblock %}
+
